@@ -1,0 +1,4 @@
+.profile__titlebox {
+    display: flex;
+    align-items: baseline;
+}

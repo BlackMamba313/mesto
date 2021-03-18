@@ -1,0 +1,14 @@
+.popup__inpBox {
+    width: 358px;
+    height: 27px;
+    margin-bottom: 30px;
+    margin-left: 36px;
+    border-bottom: 1px solid #000000;
+}
+
+@media screen and (max-width:880px) {
+    .popup__inpBox{
+        width: 238px;
+        margin-left: 22px;
+    }
+}

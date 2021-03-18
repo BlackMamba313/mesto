@@ -1,0 +1,6 @@
+.elements__info {
+    display: flex;
+    background: #FFFFFF;
+    align-items: center;
+    justify-content: space-between;
+}
