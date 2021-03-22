@@ -1,5 +1,4 @@
 .profile__edit-btn {
-    margin-left: 18px;
     background-color: black;
     background-image: url(../../../images/Vector.svg);
     background-repeat: no-repeat;
@@ -18,7 +17,6 @@
 
 @media screen and (max-width:880px) {
     .profile__edit-btn {
-        margin-left: 10px;
         width: 18px;
         height: 18px;
         background-size: 7.5px;

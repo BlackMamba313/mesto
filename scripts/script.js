@@ -14,23 +14,19 @@ function popupClose() {
 popupClosed.addEventListener('click', popupClose);
 popupLink.addEventListener('click', popupOpened);
 
-// Находим форму в DOM
 let formElement = document.querySelector('.popup__container')
-// Находим поля формы в DOM
-    let nameInput = document.querySelector('name' , 'nameInput')
-    let jobInput = document.querySelector('name' , 'jobInput')
+let nameInput = document.querySelector("input[name='nameInput']")
+let jobInput = document.querySelector("input[name='jobInput']")
 
     function formSubmitHandler (evt) {
-        event.preventDefault();
-
-        // Получите значение полей jobInput и nameInput из свойства value
-        document.querySelector("input[name='nameInput']").value
-        document.querySelector("input[name='jobInput']").value
-        // Выберите элементы, куда должны быть вставлены значения полей
-
-        // Вставьте новые значения с помощью textContent
-    }
+        evt.preventDefault();
+        let nameValue = nameInput.value;
+        let jobValue = jobInput.value;
+        let name = document.querySelector('.profile__title');
+        let job = document.querySelector('.profile__subtitle');
+        name.textContent = nameValue;
+        job.textContent = jobValue;
+        popupClose();
+    };
 
 formElement.addEventListener('submit', formSubmitHandler);
-
-console.log(jobInput)
