@@ -1,0 +1,25 @@
+.popup__close {
+    background-image:url(../../../images/addButton.svg);
+    background-color: transparent;
+    background-size: cover;
+    position: absolute;
+    height: 40px;
+    width: 40px;
+    right: -40px;
+    top: -40px;
+    border: none;
+    transform: rotate(-45deg);
+}
+
+.popup__close:hover {
+    opacity: 0.6;
+    cursor: pointer;
+}
+
+@media screen and (max-width:880px) {
+    .popup__close {
+        height: 26px;
+        width: 26px;
+        right: -5px;
+    }
+}
