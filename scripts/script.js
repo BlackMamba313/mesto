@@ -69,7 +69,7 @@ const closePopupOverlay = event => {
 
     closePopup(event.target);
 }
-popupEditBtn.addEventListener('mousedown', closePopupOverlay);
+popupProfile.addEventListener('mousedown', closePopupOverlay);
 popupAdd.addEventListener('mousedown', closePopupOverlay);
 popupWrapImage.addEventListener('mousedown', closePopupOverlay);
 
