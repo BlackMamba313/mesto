@@ -26,24 +26,24 @@ const initialCards = [
     }
 ];
 // переменные для pop-up редактирования профиля___________________
-let popupEditBtn = document.querySelector('.profile__edit-btn');
-let popupProfile = document.querySelector('.popup-profile-edit');
-let formElement = document.querySelector("form[name='editProfile']");
-let nameInput = document.querySelector("input[name='nameInput']");
-let jobInput = document.querySelector("input[name='jobInput']");
-let name = document.querySelector('.profile__title');
-let job = document.querySelector('.profile__subtitle');
+const popupEditBtn = document.querySelector('.profile__edit-btn');
+const popupProfile = document.querySelector('.popup_type_profile');
+const formElement = document.querySelector("form[name='editProfile']");
+const nameInput = document.querySelector("input[name='nameInput']");
+const jobInput = document.querySelector("input[name='jobInput']");
+const name = document.querySelector('.profile__title');
+const job = document.querySelector('.profile__subtitle');
 
 //переменные для pop-up добавления карточки___________________________
-let popupAdd = document.querySelector('.popup-card-add');
-let popupAddButton = document.querySelector('.profile__add-btn');
-let formElementAdd = popupAdd.querySelector("form[name='addCard']");
-let nameCardInput = popupAdd.querySelector("input[name='card-title']");;
-let urlCardInput = popupAdd.querySelector("input[name='card-link']");
+const popupAdd = document.querySelector('.popup_type_add');
+const popupAddButton = document.querySelector('.profile__add-btn');
+const formElementAdd = popupAdd.querySelector("form[name='addCard']");
+const nameCardInput = popupAdd.querySelector("input[name='card-title']");;
+const urlCardInput = popupAdd.querySelector("input[name='card-link']");
 //переменные для pop-up картинки в большом масштабе______________
-let popupWrapImage = document.querySelector('.popup-image');
-let popupImage = popupWrapImage.querySelector('.popup__image');
-let popupImageTitle = popupWrapImage.querySelector('.popup__image-title');
+const popupWrapImage = document.querySelector('.popup_type_image');
+const popupImage = popupWrapImage.querySelector('.popup__image');
+const popupImageTitle = popupWrapImage.querySelector('.popup__image-title');
 //переменная всех кнопок закрытия pop-up_________________________
 const popupCloseButtonAll = document.querySelectorAll('.popup-close');
 //функция закрите pop-up__________________________________________
@@ -55,25 +55,6 @@ const closePopup = () => {
 popupCloseButtonAll.forEach(button => {
     button.addEventListener('click', closePopup)
 });
-//закрытие pop-up по нажатию esc______________________________________
-const closePopupByEscKey = evt => {
-    if (evt.keyCode === 27) {
-        closePopup();
-    }
-}
-//закрытие pop-up по оверлею____________________________________
-const closePopupOverlay = event => {
-    if (event.target !== event.currentTarget)
-
-        return;
-
-    closePopup(event.target);
-}
-popupProfile.addEventListener('mousedown', closePopupOverlay);
-popupAdd.addEventListener('mousedown', closePopupOverlay);
-popupWrapImage.addEventListener('mousedown', closePopupOverlay);
-
-
 
 //переменные карточек________________________________________
 const cardItemTemplate = document.querySelector('#card').content;
@@ -121,7 +102,6 @@ initialCards.forEach(card => {
 
 const openPopup = popup => {
     popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupByEscKey);
 }
 
 // обработчик формы окна редактирования профиля
