@@ -49,22 +49,26 @@
     </template>
     <div class="popup popup_type_profile">
         <div class="popup__body">
-            <form name="editProfile" action="#" method="post">
+            <form class="popup__form" novalidate name="editProfile" action="#" method="post">
                 <button type="button" class="popup__close popup-close"></button>
                 <h2 class="popup__title">Редактировать профиль</h2>
-                <input class="popup__inp" type="text" name="nameInput" value="">
-                <input class="popup__inp" type="text" name="jobInput" value="">
+                <input id="name-input" minlength="2" maxlength="40" required class="popup__inp popup__inp_name" type="text" name="nameInput">
+                <span class='popup__error' id='name-input-error'></span>
+                <input id="text-input" minlength="2" maxlength="200" required class="popup__inp popup__inp_text" type="text" name="jobInput">
+                <span class='popup__error' id='text-input-error'></span>
                 <button class="popup__btn-save" type="submit">Сохранить</button>
             </form>
         </div>
     </div>
     <div class="popup popup_type_add">
         <div class="popup__body">
-            <form name="addCard" action="#" method="post">
+            <form class="popup__form" novalidate name="addCard" action="#" method="post">
                 <button type="button" class="popup__close popup-close"></button>
                 <h2 class="popup__title">Новое место</h2>
-                <input class="popup__inp" type="text" name="card-title" placeholder="Название" value="">
-                <input class="popup__inp" type="text" name="card-link" placeholder="Ссылка на картинку" value="">
+                <input id="title-input" required minlength="2" type="text" maxlength="30" class="popup__inp popup__inp_title"  name="card-title" placeholder="Название">
+                <span class="popup__error" id="title-input-error">Вы пропустили это поле.</span>
+                <input id="link-input" type="url" required class="popup__inp popup__inp_url" name="card-link" placeholder="Ссылка на картинку">
+                <span class="popup__error" id="link-input-error">Вы пропустили это поле.</span>
                 <button class="popup__btn-save" type="submit">Создать</button>
             </form>
         </div>
@@ -76,6 +80,7 @@
             <button type="button" class="popup__close popup-close"></button>
         </div>
     </div>
-    <script src="./scripts/script.js"></script>
+    <script src="./scripts/index.js"></script>
+    <script src="./scripts/validate.js"></script>
 </body>
 </html>

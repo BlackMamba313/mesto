@@ -28,16 +28,16 @@ const initialCards = [
 // переменные для pop-up редактирования профиля___________________
 const popupEditBtn = document.querySelector('.profile__edit-btn');
 const popupProfile = document.querySelector('.popup_type_profile');
-const formElement = document.querySelector("form[name='editProfile']");
-const nameInput = document.querySelector("input[name='nameInput']");
-const jobInput = document.querySelector("input[name='jobInput']");
+const formElement = popupProfile.querySelector('.popup__form');
+const nameInput = popupProfile.querySelector("input[name='nameInput']");
+const jobInput = popupProfile.querySelector("input[name='jobInput']");
 const name = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
 
 //переменные для pop-up добавления карточки___________________________
 const popupAdd = document.querySelector('.popup_type_add');
 const popupAddButton = document.querySelector('.profile__add-btn');
-const formElementAdd = popupAdd.querySelector("form[name='addCard']");
+const formElementAdd = popupAdd.querySelector('.popup__form');
 const nameCardInput = popupAdd.querySelector("input[name='card-title']");;
 const urlCardInput = popupAdd.querySelector("input[name='card-link']");
 //переменные для pop-up картинки в большом масштабе______________
@@ -55,6 +55,24 @@ const closePopup = () => {
 popupCloseButtonAll.forEach(button => {
     button.addEventListener('click', closePopup)
 });
+
+//закрытие pop-up по нажатию esc______________________________________
+const closePopupByEscKey = evt => {
+    if (evt.keyCode === 27) {
+        closePopup();
+    }
+}
+//закрытие pop-up по оверлею____________________________________
+const closePopupOverlay = event => {
+    if (event.target !== event.currentTarget)
+
+        return;
+
+    closePopup(event.target);
+}
+popupProfile.addEventListener('mousedown', closePopupOverlay);
+popupAdd.addEventListener('mousedown', closePopupOverlay);
+popupWrapImage.addEventListener('mousedown', closePopupOverlay);
 
 //переменные карточек________________________________________
 const cardItemTemplate = document.querySelector('#card').content;
@@ -102,6 +120,7 @@ initialCards.forEach(card => {
 
 const openPopup = popup => {
     popup.classList.add('popup_opened');
+    document.addEventListener('keydown', closePopupByEscKey);
 }
 
 // обработчик формы окна редактирования профиля
@@ -143,3 +162,4 @@ const handleAddCardFormSubmit = event => {
 
 }
 formElementAdd.addEventListener('submit', handleAddCardFormSubmit);
+
