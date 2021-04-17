@@ -1,79 +1,51 @@
-// исходный массив данный для карт__________________________________
-const initialCards = [
-    {
-        name: 'Архыз',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg'
-    },
-    {
-        name: 'Челябинская область',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg'
-    },
-    {
-        name: 'Иваново',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg'
-    },
-    {
-        name: 'Камчатка',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg'
-    },
-    {
-        name: 'Холмогорский район',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg'
-    },
-    {
-        name: 'Байкал',
-        link: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg'
-    }
-];
 // переменные для pop-up редактирования профиля___________________
-const popupEditBtn = document.querySelector('.profile__edit-btn');
+const openEditProfilePopupBtn = document.querySelector('.profile__edit-btn');
 const popupProfile = document.querySelector('.popup_type_profile');
-const formElement = popupProfile.querySelector('.popup__form');
+const btnProDel = popupProfile.querySelector('.popup__close');
+const formEditProfile = popupProfile.querySelector('.popup__form');
 const nameInput = popupProfile.querySelector("input[name='nameInput']");
 const jobInput = popupProfile.querySelector("input[name='jobInput']");
 const name = document.querySelector('.profile__title');
 const job = document.querySelector('.profile__subtitle');
-
 //переменные для pop-up добавления карточки___________________________
 const popupAdd = document.querySelector('.popup_type_add');
 const popupAddButton = document.querySelector('.profile__add-btn');
-const formElementAdd = popupAdd.querySelector('.popup__form');
-const nameCardInput = popupAdd.querySelector("input[name='card-title']");;
+const formAddCard = popupAdd.querySelector('.popup__form');
+const btnAddDel = popupAdd.querySelector('.popup__close');
+const nameCardInput = popupAdd.querySelector("input[name='card-title']");
 const urlCardInput = popupAdd.querySelector("input[name='card-link']");
 //переменные для pop-up картинки в большом масштабе______________
 const popupWrapImage = document.querySelector('.popup_type_image');
+const btnImgDel = popupWrapImage.querySelector('.popup__close');
 const popupImage = popupWrapImage.querySelector('.popup__image');
 const popupImageTitle = popupWrapImage.querySelector('.popup__image-title');
-//переменная всех кнопок закрытия pop-up_________________________
-const popupCloseButtonAll = document.querySelectorAll('.popup-close');
-//функция закрите pop-up__________________________________________
-const closePopup = () => {
-    document.querySelector('.popup_opened').classList.remove('popup_opened');
-    document.removeEventListener('keydown', closePopupByEscKey);
-}
-
-popupCloseButtonAll.forEach(button => {
-    button.addEventListener('click', closePopup)
-});
-
 //закрытие pop-up по нажатию esc______________________________________
-const closePopupByEscKey = evt => {
-    if (evt.keyCode === 27) {
-        closePopup();
-    }
+
+
+
+const openPopup = popup => {
+    popup.classList.add('popup_opened');
+    popup.addEventListener('click', closePopupOverlay);
+    document.addEventListener('keydown', function (evt){closePopupByEscKey(evt, popup)});
 }
+
+//функция закрите pop-up__________________________________________
+const closePopup = popup => {
+    popup.classList.remove('popup_opened');
+    document.removeEventListener('keydown', function (evt){closePopupByEscKey(evt, popup)});
+    popup.removeEventListener('click', closePopupOverlay);
+}
+
 //закрытие pop-up по оверлею____________________________________
 const closePopupOverlay = event => {
     if (event.target !== event.currentTarget)
-
         return;
-
     closePopup(event.target);
 }
-popupProfile.addEventListener('mousedown', closePopupOverlay);
-popupAdd.addEventListener('mousedown', closePopupOverlay);
-popupWrapImage.addEventListener('mousedown', closePopupOverlay);
 
+const closePopupByEscKey = function (evt, popup) {
+    if (evt.keyCode === 27) { closePopup(popup);}
+}
 //переменные карточек________________________________________
 const cardItemTemplate = document.querySelector('#card').content;
 const elementContainer = document.querySelector('.elements')
@@ -118,23 +90,19 @@ initialCards.forEach(card => {
     addCardToContainer(elementContainer, cardElement);
 });
 
-const openPopup = popup => {
-    popup.classList.add('popup_opened');
-    document.addEventListener('keydown', closePopupByEscKey);
-}
 
 // обработчик формы окна редактирования профиля
-formElement.addEventListener('submit', formSubmitHandler);
+formEditProfile.addEventListener('submit', formEditProfileSubmitHandler);
 
-function formSubmitHandler (evt) {
+function formEditProfileSubmitHandler (evt) {
     evt.preventDefault();
     name.textContent = nameInput.value;
     job.textContent = jobInput.value;
-    closePopup();
-};
+    closePopup(popupProfile);
+}
 
 //слушатель pop-up редактирования профиля
-popupEditBtn.addEventListener('click', function() {
+openEditProfilePopupBtn.addEventListener('click', function() {
     openPopup(popupProfile);
 
     nameInput.value = name.textContent;
@@ -157,9 +125,12 @@ const handleAddCardFormSubmit = event => {
     const elementItem = createCard(nameCard, urlCard);
 
     addCardToContainer(elementContainer, elementItem);
-    formElementAdd.reset();
-    closePopup();
+    formAddCard.reset();
+    closePopup(popupAdd);
 
 }
-formElementAdd.addEventListener('submit', handleAddCardFormSubmit);
+formAddCard.addEventListener('submit', handleAddCardFormSubmit);
+btnProDel.addEventListener('click', () => closePopup(popupProfile));
+btnAddDel.addEventListener('click', () => closePopup(popupAdd));
+btnImgDel.addEventListener('click', () => closePopup(popupWrapImage));
 
