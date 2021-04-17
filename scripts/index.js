@@ -44,7 +44,7 @@ const closePopupOverlay = event => {
 }
 
 const closePopupByEscKey = function (evt, popup) {
-    if (evt.keyCode === 27) { closePopup(popup);}
+    if (evt.key === 'Escape') { closePopup(popup);}
 }
 //переменные карточек________________________________________
 const cardItemTemplate = document.querySelector('#card').content;
