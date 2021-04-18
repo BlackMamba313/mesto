@@ -19,7 +19,6 @@ const popupWrapImage = document.querySelector('.popup_type_image');
 const btnImgDel = popupWrapImage.querySelector('.popup__close');
 const popupImage = popupWrapImage.querySelector('.popup__image');
 const popupImageTitle = popupWrapImage.querySelector('.popup__image-title');
-//закрытие pop-up по нажатию esc______________________________________
 
 
 
@@ -31,9 +30,11 @@ const openPopup = popup => {
 
 //функция закрите pop-up__________________________________________
 const closePopup = popup => {
+    const popupForm = popup.querySelector('.popup__form')
     popup.classList.remove('popup_opened');
     document.removeEventListener('keydown', function (evt){closePopupByEscKey(evt, popup)});
     popup.removeEventListener('click', closePopupOverlay);
+    popupForm.reset()
 }
 
 //закрытие pop-up по оверлею____________________________________
@@ -119,15 +120,15 @@ popupAddButton.addEventListener('click', function(evt) {
 
 const handleAddCardFormSubmit = event => {
     event.preventDefault()
-
+    const cardButton = popupAdd.querySelector('.popup__btn-save');
     const nameCard = nameCardInput.value;
     const urlCard =  urlCardInput.value;
     const elementItem = createCard(nameCard, urlCard);
 
     addCardToContainer(elementContainer, elementItem);
-    formAddCard.reset();
+    cardButton.classList.add('popup__btn-save_inactive');
+    cardButton.setAttribute('disabled', true);
     closePopup(popupAdd);
-
 }
 formAddCard.addEventListener('submit', handleAddCardFormSubmit);
 btnProDel.addEventListener('click', () => closePopup(popupProfile));

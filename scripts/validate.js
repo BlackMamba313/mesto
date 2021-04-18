@@ -1,4 +1,3 @@
-
 const showInputError = (formSelector, inputSelector, errorMessage, object) => {
     const errorElement = formSelector.querySelector(`#${inputSelector.id}-error`);
     inputSelector.classList.add(object.inputErrorClass);
@@ -36,7 +35,6 @@ const hasInvalidInput = inputList => {
 }
 
 //опишем фукнцию для переключения кнопки в неактивный режим
-
 const toggleButtonState = (inputList, submitButtonSelector, object) => {
     if(hasInvalidInput(inputList)) {
         submitButtonSelector.classList.add(object.inactiveButtonClass);
@@ -49,26 +47,21 @@ const toggleButtonState = (inputList, submitButtonSelector, object) => {
 }
 
 //опишем функцию, чтобы навесить события на все формы
-
-
-
 const setEventListeners = (formElement, object) => {
     const inputList = Array.from(formElement.querySelectorAll(object.inputSelector));
     const buttonElement = formElement.querySelector(object.submitButtonSelector);
 
-    toggleButtonState(inputList, buttonElement, object);
+    toggleButtonState(inputList, buttonElement, object)
 
     inputList.forEach((inputSelector) => {
         inputSelector.addEventListener('input', function() {
             checkInputValidity(formElement, inputSelector, object);
-            toggleButtonState(inputList, buttonElement, object);
+            toggleButtonState(inputList, buttonElement, object)
         });
     });
 }
 
 //опишем функцию для валидации
-
-
 const enableValidation = (object) => {
     const formList = Array.from(document.querySelectorAll(object.formSelector));
     formList.forEach((item) => {
