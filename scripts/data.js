@@ -2,15 +2,15 @@
 export const initialCards = [
     {
         name: 'Таганрог',
-        link: '../images/taganrog.jpg'
+        link: './images/taganrog.jpg'
     },
     {
         name: 'Чехов',
-        link: '../images/pamChex.jpg'
+        link: './images/pamChex.jpg'
     },
     {
         name: 'Театр им.Чехова',
-        link: '../images/teatr.jpg'
+        link: './images/teatr.jpg'
     },
     {
         name: 'Домик Чехова',
@@ -18,10 +18,10 @@ export const initialCards = [
     },
     {
         name: 'Каменная лестница',
-        link: '../images/lestnica.jpg'
+        link: './images/lestnica.jpg'
     },
     {
         name: 'Лавка Чеховых',
-        link: '../images/lavkaChex.jpg'
+        link: './images/lavkaChex.jpg'
     }
 ];
