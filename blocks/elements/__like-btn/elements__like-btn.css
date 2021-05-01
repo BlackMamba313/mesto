@@ -5,9 +5,10 @@
     height: 18px;
     align-self: center;
     padding: 0;
-    border: 0;
+    border: none;
     background-color: transparent;
     transition: 0.3s;
+    outline: none;
 }
 
 .elements__like-btn:hover {
@@ -15,6 +16,8 @@
     cursor: pointer;
 }
 
+
 .elements__like-btn:active {
     background-image: url(../../../images/like-active.svg);
+    
 }
