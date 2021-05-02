@@ -1,6 +1,6 @@
 import {initialCards} from './data.js'
-import {Card} from './card.js'
-import {FormValidator} from './validate.js';
+import {Card} from './Сard.js'
+import {FormValidator} from './FormValidator.js';
 
 const setupValidation = {
     formSelector: '.popup__form',
