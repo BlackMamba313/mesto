@@ -1,8 +1,8 @@
 import {openPopup} from './index.js';
 export class Card {  
-	constructor(name, link, cardSelector) { 
-	    this._name = name;    
-		this._link = link;    
+	constructor(data, cardSelector) { 
+	    this._name = data.name;    
+		this._link = data.link;    
 		this._cardSelector = cardSelector;
     }
 
