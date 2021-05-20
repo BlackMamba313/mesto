@@ -1,11 +1,11 @@
-import Section from '../scripts/Section.js';
+import Section from '../components/Section.js';
 import {initialCards, setupValidation, popupProfile, 
-formElementPro, popupAdd, formElementAdd} from '../utils/data.js'
-import Card from '../scripts/Сard.js'
-import FormValidator from '../scripts/FormValidator.js';
-import PopupWithImage from '../scripts/PopupWithImage.js';
-import PopupWithForm from '../scripts/PopupWithForm.js';
-import UserInfo from '../scripts/UserInfo.js';
+formElementPro, popupAdd, formElementAdd} from '../utils/Data.js'
+import Card from '../components/Сard.js'
+import FormValidator from '../components/FormValidator.js';
+import PopupWithImage from '../components/PopupWithImage.js';
+import PopupWithForm from '../components/PopupWithForm.js';
+import UserInfo from '../components/UserInfo.js';
 import './index.css'
 
 //подключаем валидацию
