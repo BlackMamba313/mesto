@@ -1,25 +1,12 @@
-import Section from './Section.js';
-import {initialCards} from './data.js'
-import Card from './Сard.js'
-import FormValidator from './FormValidator.js';
-import PopupWithImage from './PopupWithImage.js';
-import PopupWithForm from './PopupWithForm.js';
-import UserInfo from './UserInfo.js';
-
-const popupProfile = document.querySelector('.popup_type_profile');
-const formElementPro = popupProfile.querySelector('.popup__form');
-const popupAdd = document.querySelector('.popup_type_add');
-const formElementAdd = popupAdd.querySelector('.popup__form');
-
-
-const setupValidation = {
-  formSelector: '.popup__form',
-  inputSelector: '.popup__inp',
-  submitButtonSelector: '.popup__btn-save',
-  inactiveButtonClass: 'popup__btn-save_inactive',
-  inputErrorClass: 'popup__inp_type_error',
-  errorClass: 'popup__error_visible',
-}
+import Section from '../scripts/Section.js';
+import {initialCards, setupValidation, popupProfile, 
+formElementPro, popupAdd, formElementAdd} from '../utils/data.js'
+import Card from '../scripts/Сard.js'
+import FormValidator from '../scripts/FormValidator.js';
+import PopupWithImage from '../scripts/PopupWithImage.js';
+import PopupWithForm from '../scripts/PopupWithForm.js';
+import UserInfo from '../scripts/UserInfo.js';
+import './index.css'
 
 //подключаем валидацию
 const formAdd = new FormValidator(setupValidation, formElementAdd);
@@ -33,6 +20,7 @@ const userInfo = new UserInfo({userName :'.profile__title', userJob: '.profile__
 const popupWithImage = new PopupWithImage('.popup_type_image');
 const addCardPopup = new PopupWithForm('.popup_type_add', addSubmitHandler);
 const profilePopup = new PopupWithForm('.popup_type_profile', submitProfileHandler)
+
 // функция рендера карточки
 function renderer (item) {
   const renderCard = new Card(item, '.card-template', handleCardClick)
@@ -40,6 +28,7 @@ function renderer (item) {
   sectionCards.addItem(cardElement)
 }
 
+// функции открытия формы профиля/сабмита формы профиля
 function editButtonHandler() {
   
   userInfo.getUserInfo();
@@ -49,11 +38,11 @@ function editButtonHandler() {
   btndisabled(popupProfile)
   profilePopup.open()
 }
-
 function submitProfileHandler(values){
   userInfo.setUserInfo(values);
 }
 
+//функция сброса кнопки сабмита формы
 function btndisabled(popup) {
   popup.querySelector('.popup__btn-save').classList
   .add('popup__btn-save_inactive');
@@ -61,7 +50,7 @@ function btndisabled(popup) {
   .setAttribute('disabled', true);
 }
 
-// функции открытия формы карточки/сабмита формы карточки/
+// функции открытия формы карточки/сабмита формы карточки/открытия большой картинки
 function addButtonHandler() { addCardPopup.open() }
 function addSubmitHandler(items){
   renderer (items)

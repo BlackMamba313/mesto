@@ -1,0 +1,41 @@
+{
+  "name": "mesto",
+  "version": "1.0.0",
+  "description": "**Проект** - платформа, где люди делятся фотографиями из разных мест. Похожа на соц.сеть (возможность добавлять новые фотографии, ставить лайки)\r Цель проекта - освоить и закрепить на практике: основы JS, DOM.\r В проекте **применены** _адаптивная верстка_, _Grid_, _БЭМ_, _Flex_, _разные методы позиционирования_, соблюдена _семантика_.\r Реализованы возможности редактирования данных профиля, загрузки новых фотографий через формы popup, валидация форм, закрытие модальных окон черех esc и нажатие на область вне модального окна. Также фотографии можно увеличивать через popup и ставить лайки. \r Применены принципы ООП",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --mode production",
+    "dev": "webpack serve"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Maria-webdev/mesto.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Maria-webdev/mesto/issues"
+  },
+  "homepage": "https://github.com/Maria-webdev/mesto#readme",
+  "devDependencies": {
+    "@babel/core": "^7.14.0",
+    "@babel/preset-env": "^7.14.0",
+    "autoprefixer": "^10.2.5",
+    "babel-loader": "^8.2.2",
+    "clean-webpack-plugin": "^4.0.0-alpha.0",
+    "css-loader": "^5.2.4",
+    "cssnano": "^5.0.2",
+    "gh-pages": "^3.1.0",
+    "html-loader": "^2.1.2",
+    "html-webpack-plugin": "^5.3.1",
+    "mini-css-extract-plugin": "^1.6.0",
+    "postcss-loader": "^5.2.0",
+    "webpack": "^5.36.2",
+    "webpack-cli": "^4.6.0",
+    "webpack-dev-server": "^3.11.2"
+  },
+  "dependencies": {
+    "core-js": "^2.6.12",
+    "rimraf": "^3.0.2"
+  }
+}
