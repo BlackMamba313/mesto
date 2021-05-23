@@ -36,7 +36,7 @@ export default class FormValidator {
   //метод переключения активности кнопки
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this.disableBtnSend()
+      this.disableBtnSend();
     } else {
       this._button.classList.remove(this._setupValidation.inactiveButtonClass);
       this._button.removeAttribute('disabled', '');

@@ -40,7 +40,11 @@ export const popupProfile = document.querySelector('.popup_type_profile');
 export const formElementProfile = popupProfile.querySelector('.popup__form');
 export const popupAdd = document.querySelector('.popup_type_add');
 export const formElementAdd = popupAdd.querySelector('.popup__form');
-export const popupSelectors = {add: '.popup_type_add', profile: '.popup_type_profile', image: '.popup_type_image'};
-export const profileConfig = {key1: '.profile__title', key2: '.profile__subtitle'};
+export const popupSelectors = {
+  add: '.popup_type_add',
+  profile: '.popup_type_profile',
+  image: '.popup_type_image',
+};
+export const profileConfig = { key1: '.profile__title', key2: '.profile__subtitle' };
 export const cardSectionSelector = '.elements';
-export const inputSelectors = {name: '.popup__input_name', text: '.popup__input_text'};
+export const inputSelectors = { name: '.popup__input_name', text: '.popup__input_text' };

@@ -16,7 +16,6 @@ import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
 
-
 //подключаем валидацию
 const formAdd = new FormValidator(configValidation, formElementAdd);
 formAdd.enableValidation();
@@ -44,7 +43,7 @@ function sendFormProfile(values) {
 
 // функции открытия формы карточки/сабмита формы карточки/открытия большой картинки
 function openFormCard() {
-  formAdd.disableBtnSend()
+  formAdd.disableBtnSend();
   addCardPopup.open();
 }
 function sendFormAdd(items) {
@@ -54,10 +53,12 @@ function openBigImage(placeName, placeLink) {
   popupWithImage.open(placeName, placeLink);
 }
 
-
 //создаём экземпляры классов
 const sectionCards = new Section(initialCards, addNewCard, cardSectionSelector);
-const userInfo = new UserInfo({ userNameSelector: profileConfig.key1, userJobSelector: profileConfig.key2 });
+const userInfo = new UserInfo({
+  userNameSelector: profileConfig.key1,
+  userJobSelector: profileConfig.key2,
+});
 const popupWithImage = new PopupWithImage(popupSelectors.image);
 const addCardPopup = new PopupWithForm(popupSelectors.add, sendFormAdd);
 const profilePopup = new PopupWithForm(popupSelectors.profile, sendFormProfile);
