@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Место</title>
+<script defer src="main.js"></script><link href="main.css" rel="stylesheet"></head>
+
+<body class="body">
+
+  <header class="header">
+    <img class="header__logo" src="03b78ada3425e9132ff3.svg" alt="логотип сайта">
+  </header>
+          
+  <main>
+
+    <section class="profile">
+      <img class="profile__avatar" src="9e4d94e9822572effd4b.png" alt="Жак-Ив Кусто">
+      <div class="profile__info">
+        <div class="profile__titlebox">
+            <h1 class="profile__title">Жак-Ив Кусто</h1>
+            <button type="button" class="profile__edit-btn"></button>
+        </div>
+        <p class="profile__subtitle">Исследователь океана</p>
+      </div>
+      <button type="button" class="profile__add-btn popup-link"></button>
+    </section>
+
+    <section class="elements">
+
+    </section>
+                   
+  </main>
+  <footer class="footer">
+    <p class="footer__copyright">&#169; 2020 Mesto Russia</p>
+  </footer>
+  <template  class="card-template">
+    <article class="elements__card">
+      <div class="elements__img-container">
+        <img src="cbc09a894bdd4c956365.svg" alt="Удалить" class="elements__delete-btn">
+        <img src="#" alt="#" class="elements__image popup-link">
+      </div>
+      <div class="elements__info">
+        <h2 class="elements__title"></h2>
+        <button type="button" class="elements__like-btn"></button>
+      </div>
+    </article>
+  </template>
+  <div class="popup popup_type_profile">
+    <div class="popup__body">
+      <form class="popup__form" novalidate name="editProfile" action="#" method="post">
+        <button type="button" class="popup__close popup-close"></button>
+        <h2 class="popup__title">Редактировать профиль</h2>
+        <input name="userName" id="name-input" minlength="2" maxlength="40" placeholder="Имя" required class="popup__input popup__input_name" type="text" >
+        <span class='popup__error' id='name-input-error'></span>
+        <input name="userJob" id="text-input" minlength="2" maxlength="200" placeholder="Вид деятельности" required class="popup__input popup__input_text" type="text" >
+        <span class='popup__error' id='text-input-error'></span>
+        <button class="popup__btn-save" type="submit">Сохранить</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_type_add">
+    <div class="popup__body">
+      <form class="popup__form" novalidate name="addCard" action="#" method="post">
+        <button type="button" class="popup__close popup-close"></button>
+        <h2 class="popup__title">Новое место</h2>
+        <input name="placeName" id="title-input" required minlength="2" type="text" maxlength="30" class="popup__input popup__input_title" placeholder="Название">
+        <span class="popup__error" id="title-input-error">Вы пропустили это поле.</span>
+        <input name="placeLink" id="link-input"  class="popup__input popup__input_url" placeholder="Ссылка на картинку" type="url" required>
+        <span class="popup__error" id="link-input-error">Вы пропустили это поле.</span>
+        <button class="popup__btn-save" type="submit">Создать</button>
+      </form>
+    </div>
+  </div>
+  <div class="popup popup_type_image">
+    <div class="popup__image-container">
+      <img src="#" alt="#" class="popup__image">
+      <p class="popup__image-title"></p>
+      <button type="button" class="popup__close popup-close"></button>
+    </div>
+  </div>
+</body>
+</html>
