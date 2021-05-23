@@ -1,64 +1,66 @@
+//import './index.css';
 import Section from '../components/Section.js';
-import {initialCards, setupValidation, popupProfile, 
-formElementPro, popupAdd, formElementAdd} from '../utils/Data.js'
-import Card from '../components/Сard.js'
+import {
+  cardSectionSelector,
+  inputSelectors,
+  popupSelectors,
+  profileConfig,
+  initialCards,
+  configValidation,
+  formElementProfile,
+  formElementAdd,
+} from '../utils/Сonstants.js';
+import Card from '../components/Сard.js';
 import FormValidator from '../components/FormValidator.js';
 import PopupWithImage from '../components/PopupWithImage.js';
 import PopupWithForm from '../components/PopupWithForm.js';
 import UserInfo from '../components/UserInfo.js';
-import './index.css'
+
 
 //подключаем валидацию
-const formAdd = new FormValidator(setupValidation, formElementAdd);
+const formAdd = new FormValidator(configValidation, formElementAdd);
 formAdd.enableValidation();
-const formProfile = new FormValidator(setupValidation, formElementPro);
+const formProfile = new FormValidator(configValidation, formElementProfile);
 formProfile.enableValidation();
 
-//создаём экземпляры классов
-const sectionCards = new Section(initialCards, renderer,'.elements');
-const userInfo = new UserInfo({userName :'.profile__title', userJob: '.profile__subtitle'});
-const popupWithImage = new PopupWithImage('.popup_type_image');
-const addCardPopup = new PopupWithForm('.popup_type_add', addSubmitHandler);
-const profilePopup = new PopupWithForm('.popup_type_profile', submitProfileHandler)
-
-// функция рендера карточки
-function renderer (item) {
-  const renderCard = new Card(item, '.card-template', handleCardClick)
-  const cardElement = renderCard.generateCard(item)
-  sectionCards.addItem(cardElement)
+// функция добавления карточки
+function addNewCard(item) {
+  const renderCard = new Card(item, '.card-template', openBigImage);
+  const cardElement = renderCard.generateCard(item);
+  sectionCards.addItem(cardElement);
 }
 
 // функции открытия формы профиля/сабмита формы профиля
-function editButtonHandler() {
-  
-  userInfo.getUserInfo();
-  const data = userInfo.getUserInfo()
-  document.querySelector('.popup__inp_name').value = data.userName;
-  document.querySelector('.popup__inp_text').value = data.userJob;
-  btndisabled(popupProfile)
-  profilePopup.open()
+function openFormProfile() {
+  const data = userInfo.getUserInfo();
+  document.querySelector(inputSelectors.name).value = data.userName;
+  document.querySelector(inputSelectors.text).value = data.userJob;
+  formProfile.disableBtnSend();
+  profilePopup.open();
 }
-function submitProfileHandler(values){
+function sendFormProfile(values) {
   userInfo.setUserInfo(values);
 }
 
-//функция сброса кнопки сабмита формы
-function btndisabled(popup) {
-  popup.querySelector('.popup__btn-save').classList
-  .add('popup__btn-save_inactive');
-  popup.querySelector('.popup__btn-save')
-  .setAttribute('disabled', true);
+// функции открытия формы карточки/сабмита формы карточки/открытия большой картинки
+function openFormCard() {
+  formAdd.disableBtnSend()
+  addCardPopup.open();
+}
+function sendFormAdd(items) {
+  addNewCard(items);
+}
+function openBigImage(placeName, placeLink) {
+  popupWithImage.open(placeName, placeLink);
 }
 
-// функции открытия формы карточки/сабмита формы карточки/открытия большой картинки
-function addButtonHandler() { addCardPopup.open() }
-function addSubmitHandler(items){
-  renderer (items)
-  btndisabled(popupAdd)
-}
-function handleCardClick(placeName, placeLink) {
-  popupWithImage.open(placeName, placeLink)
-}
+
+//создаём экземпляры классов
+const sectionCards = new Section(initialCards, addNewCard, cardSectionSelector);
+const userInfo = new UserInfo({ userNameSelector: profileConfig.key1, userJobSelector: profileConfig.key2 });
+const popupWithImage = new PopupWithImage(popupSelectors.image);
+const addCardPopup = new PopupWithForm(popupSelectors.add, sendFormAdd);
+const profilePopup = new PopupWithForm(popupSelectors.profile, sendFormProfile);
 
 // отрисовываем карточки
 sectionCards.renderItems();
@@ -67,7 +69,5 @@ sectionCards.renderItems();
 profilePopup.setEventListeners();
 popupWithImage.setEventListeners();
 addCardPopup.setEventListeners();
-document.querySelector('.profile__edit-btn')
-.addEventListener('click', editButtonHandler)
-document.querySelector('.profile__add-btn')
-.addEventListener('click', addButtonHandler)
+document.querySelector('.profile__edit-btn').addEventListener('click', openFormProfile);
+document.querySelector('.profile__add-btn').addEventListener('click', openFormCard);

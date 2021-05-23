@@ -21,10 +21,9 @@ export default class FormValidator {
   }
   //метод проверки валидности формы
   _checkInputValidity(inputElement) {
-    if(!inputElement.validity.valid) {
+    if (!inputElement.validity.valid) {
       this._showInputError(inputElement);
-    }
-    else {
+    } else {
       this._hideInputError(inputElement);
     }
   }
@@ -32,40 +31,40 @@ export default class FormValidator {
   _hasInvalidInput() {
     return this._inputList.some((inputElement) => {
       return !inputElement.validity.valid;
-      });
+    });
   }
   //метод переключения активности кнопки
   _toggleButtonState() {
-    if(this._hasInvalidInput()) {
-      this._button.classList.add(this._setupValidation.inactiveButtonClass);
-      this._button.setAttribute('disabled', '');
-    }
-    else {
+    if (this._hasInvalidInput()) {
+      this.disableBtnSend()
+    } else {
       this._button.classList.remove(this._setupValidation.inactiveButtonClass);
       this._button.removeAttribute('disabled', '');
     }
   }
 
+  disableBtnSend() {
+    this._button.classList.add(this._setupValidation.inactiveButtonClass);
+    this._button.setAttribute('disabled', '');
+  }
+
   _setEventListeners() {
     this._toggleButtonState();
-  
+
     this._inputList.forEach((inputElement) => {
       inputElement.addEventListener('input', () => {
         this._checkInputValidity(inputElement);
         this._toggleButtonState();
-        });
+      });
     });
   }
   //опишем метод, чтобы навесить события на все формы
-  
+
   //опишем метод для валидации
   enableValidation() {
     this._form.addEventListener('submit', (evt) => {
       evt.preventDefault();
-    })
+    });
     this._setEventListeners();
   }
 }
-
-
-
