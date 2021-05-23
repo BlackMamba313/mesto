@@ -3,20 +3,19 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="./pages/index.css">
   <title>Место</title>
 </head>
 
 <body class="body">
 
   <header class="header">
-    <img class="header__logo" src="./images/mesto-logo.svg" alt="логотип сайта">
+    <img class="header__logo" src="<%=require('./images/mesto-logo.svg')%>" alt="логотип сайта">
   </header>
           
   <main>
 
     <section class="profile">
-      <img class="profile__avatar" src="./images/avatar.png" alt="Жак-Ив Кусто">
+      <img class="profile__avatar" src="<%=require('./images/avatar.png')%>" alt="Жак-Ив Кусто">
       <div class="profile__info">
         <div class="profile__titlebox">
             <h1 class="profile__title">Жак-Ив Кусто</h1>
@@ -38,7 +37,7 @@
   <template  class="card-template">
     <article class="elements__card">
       <div class="elements__img-container">
-        <img src="./images/DeliteIcon.svg" alt="Удалить" class="elements__delete-btn">
+        <img src="<%=require('./images/DeliteIcon.svg')%>" alt="Удалить" class="elements__delete-btn">
         <img src="#" alt="#" class="elements__image popup-link">
       </div>
       <div class="elements__info">
@@ -80,6 +79,5 @@
       <button type="button" class="popup__close popup-close"></button>
     </div>
   </div>
-  <script type="module" src="./pages/index.js"></script>
 </body>
 </html>
