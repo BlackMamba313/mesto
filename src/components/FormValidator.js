@@ -33,19 +33,19 @@ export default class FormValidator {
       return !inputElement.validity.valid;
     });
   }
+  
+  disableSubmitButton() {
+    this._button.classList.add(this._setupValidation.inactiveButtonClass);
+    this._button.setAttribute('disabled', '');
+  }
   //метод переключения активности кнопки
   _toggleButtonState() {
     if (this._hasInvalidInput()) {
-      this.disableBtnSend();
+      this.disableSubmitButton();
     } else {
       this._button.classList.remove(this._setupValidation.inactiveButtonClass);
       this._button.removeAttribute('disabled', '');
     }
-  }
-
-  disableBtnSend() {
-    this._button.classList.add(this._setupValidation.inactiveButtonClass);
-    this._button.setAttribute('disabled', '');
   }
 
   _setEventListeners() {

@@ -4,6 +4,6 @@ const cssnano = require('cssnano');
 module.exports = {
   plugins: [
     autoprefixer,
-    cssnano({prset: 'default'})
+    cssnano({preset: 'default'})
   ]
 };

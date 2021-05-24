@@ -45,6 +45,6 @@ export const popupSelectors = {
   profile: '.popup_type_profile',
   image: '.popup_type_image',
 };
-export const profileConfig = { key1: '.profile__title', key2: '.profile__subtitle' };
+export const profileConfig = { userNameSelector: '.profile__title', userJobSelector: '.profile__subtitle' };
 export const cardSectionSelector = '.elements';
 export const inputSelectors = { name: '.popup__input_name', text: '.popup__input_text' };
