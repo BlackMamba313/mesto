@@ -9,6 +9,7 @@
     box-sizing: border-box;
     margin-left: inherit;
     border-radius: 2px;
+    transition: opacity 0.5s ease;
 }
 
 .profile__add-btn:hover {

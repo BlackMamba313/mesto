@@ -3,7 +3,14 @@
     width: 120px;
     height: 120px;
     margin: 40px 30px 51px 0;
+    transition: opacity 0.5s ease;
+    position: relative;
 }
+
+.profile__avatar:hover {
+    opacity: 0.2;
+    cursor: url(../../../images/Vector.svg),auto;
+  }
 
 @media screen and (max-width:880px) {
     .profile__avatar {

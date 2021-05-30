@@ -9,6 +9,7 @@
     background-color: transparent;
     transition: 0.3s;
     outline: none;
+    transition: opacity 0.5s ease;
 }
 
 .elements__like-btn:hover {

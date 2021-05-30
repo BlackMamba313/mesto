@@ -9,6 +9,7 @@
     top: -40px;
     border: none;
     transform: rotate(-45deg);
+    transition: opacity 0.5s ease;
 }
 
 .popup__close:hover {

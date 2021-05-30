@@ -4,6 +4,7 @@
     background-repeat: no-repeat;
     background-position: center center;
     background-size: 10px;
+    transition: opacity 0.5s ease;
     width: 24px;
     height: 24px;
     border: 1px solid #FFFFFF;

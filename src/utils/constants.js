@@ -1,33 +1,4 @@
-export const initialCards = [
-  {
-    placeName: 'Архыз',
-    placeLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/arkhyz.jpg',
-  },
-  {
-    placeName: 'Челябинская область',
-    placeLink:
-      'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/chelyabinsk-oblast.jpg',
-  },
-  {
-    placeName: 'Иваново',
-    placeLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/ivanovo.jpg',
-  },
-  {
-    placeName: 'Камчатка',
-    placeLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kamchatka.jpg',
-  },
-  {
-    placeName: 'Холмогорский район',
-    placeLink:
-      'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/kholmogorsky-rayon.jpg',
-  },
-  {
-    placeName: 'Байкал',
-    placeLink: 'https://pictures.s3.yandex.net/frontend-developer/cards-compressed/baikal.jpg',
-  },
-];
-
-export const configValidation = {
+export const validationConfig = {
   formSelector: '.popup__form',
   inputSelector: '.popup__input',
   submitButtonSelector: '.popup__btn-save',
@@ -36,15 +7,33 @@ export const configValidation = {
   errorClass: 'popup__error_visible',
 };
 
-export const popupProfile = document.querySelector('.popup_type_profile');
-export const formElementProfile = popupProfile.querySelector('.popup__form');
-export const popupAdd = document.querySelector('.popup_type_add');
-export const formElementAdd = popupAdd.querySelector('.popup__form');
-export const popupSelectors = {
-  add: '.popup_type_add',
-  profile: '.popup_type_profile',
-  image: '.popup_type_image',
+export const forms = {
+  add: document.querySelector('.form-addCard'),
+  profile: document.querySelector('.form-editProfile'),
+  avatar: document.querySelector('.form-newAvatar'),
 };
-export const profileConfig = { userNameSelector: '.profile__title', userJobSelector: '.profile__subtitle' };
+
+export const buttons = {
+  add: document.querySelector('.profile__add-btn'),
+  profile: document.querySelector('.profile__edit-btn'),
+  avatar: document.querySelector('.profile__avatar'),
+};
+
+export const popups = {
+  add: document.querySelector('.popup_type_add'),
+  image: document.querySelector('.popup_type_image'),
+  profile: document.querySelector('.popup_type_profile'),
+  avatar: document.querySelector('.popup_type_avatar'),
+  confirm: document.querySelector('.popup_type_confirm'),
+};
+export const profileConfig = {
+  name: document.querySelector('.profile__title'),
+  job: document.querySelector('.profile__subtitle'),
+  avatar: document.querySelector('.profile__avatar'),
+};
 export const cardSectionSelector = '.elements';
-export const inputSelectors = { name: '.popup__input_name', text: '.popup__input_text' };
+export const inputs = {
+  name: document.querySelector('.popup__input_name'),
+  text: document.querySelector('.popup__input_text'),
+  avatar: document.querySelector('.popup__input_avatar'),
+};

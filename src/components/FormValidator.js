@@ -33,7 +33,13 @@ export default class FormValidator {
       return !inputElement.validity.valid;
     });
   }
-  
+  //сброс ошибок
+  removeErrors() {
+    this._inputList.forEach((input) => {
+      this._hideInputError(input);
+    });
+  }
+  //отключение кнопки сохраниния
   disableSubmitButton() {
     this._button.classList.add(this._setupValidation.inactiveButtonClass);
     this._button.setAttribute('disabled', '');

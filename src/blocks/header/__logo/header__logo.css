@@ -2,10 +2,11 @@
   color: #FFFFFF;
   width: 142px;
   height: 33px;
+  transition: opacity 0.5s ease;
 }
 
 .header__logo:hover {
-  opacity: 0.8;
+  opacity: 0.1;
 }
   
 @media screen and (max-width: 880px) {
