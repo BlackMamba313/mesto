@@ -1,7 +1,7 @@
 import './index.css';
 import Section from '../components/Section.js';
 import {
-  cardSectionSelector,
+  cardSection,
   inputs,
   popups,
   forms,
@@ -76,7 +76,7 @@ api
           cardsList.addItem(cardElement);
         },
       },
-      cardSectionSelector,
+      cardSection,
     );
     cardsList.renderItems();
   })
@@ -135,8 +135,6 @@ const popupAvatar = new PopupWithForm({
   },
 });
 buttons.avatar.addEventListener('click', function () {
-  formAvatarValidation.removeErrors();
-  formAvatarValidation.disableSubmitButton();
   popupAvatar.open();
 });
 const formAvatarValidation = new FormValidator(validationConfig, forms.avatar);

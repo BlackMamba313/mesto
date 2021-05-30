@@ -1,22 +1,22 @@
 export default class FormValidator {
-  constructor(setupValidation, formElement) {
-    this._setupValidation = setupValidation;
+  constructor(config, formElement) {
+    this._config = config;
     this._form = formElement;
-    this._inputList = Array.from(this._form.querySelectorAll(this._setupValidation.inputSelector));
-    this._button = this._form.querySelector(this._setupValidation.submitButtonSelector);
+    this._inputList = Array.from(formElement.querySelectorAll(config.inputSelector));
+    this._button = formElement.querySelector(config.submitButtonSelector);
   }
   //метод отображения ошибки
   _showInputError(inputElement) {
     const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.add(this._setupValidation.inputErrorClass);
+    inputElement.classList.add(this._config.inputErrorClass);
     errorElement.textContent = inputElement.validationMessage;
-    errorElement.classList.add(this._setupValidation.errorClass);
+    errorElement.classList.add(this._config.errorClass);
   }
   //метод скрытия ошибки
   _hideInputError(inputElement) {
     const errorElement = this._form.querySelector(`#${inputElement.id}-error`);
-    inputElement.classList.remove(this._setupValidation.inputErrorClass);
-    errorElement.classList.remove(this._setupValidation.errorClass);
+    inputElement.classList.remove(this._config.inputErrorClass);
+    errorElement.classList.remove(this._config.errorClass);
     errorElement.textContent = '';
   }
   //метод проверки валидности формы
@@ -41,7 +41,7 @@ export default class FormValidator {
   }
   //отключение кнопки сохраниния
   disableSubmitButton() {
-    this._button.classList.add(this._setupValidation.inactiveButtonClass);
+    this._button.classList.add(this._config.inactiveButtonClass);
     this._button.setAttribute('disabled', '');
   }
   //метод переключения активности кнопки
@@ -49,7 +49,7 @@ export default class FormValidator {
     if (this._hasInvalidInput()) {
       this.disableSubmitButton();
     } else {
-      this._button.classList.remove(this._setupValidation.inactiveButtonClass);
+      this._button.classList.remove(this._config.inactiveButtonClass);
       this._button.removeAttribute('disabled', '');
     }
   }

@@ -31,9 +31,8 @@ export const profileConfig = {
   job: document.querySelector('.profile__subtitle'),
   avatar: document.querySelector('.profile__avatar'),
 };
-export const cardSectionSelector = '.elements';
+export const cardSection = document.querySelector('.elements');
 export const inputs = {
   name: document.querySelector('.popup__input_name'),
-  text: document.querySelector('.popup__input_text'),
-  avatar: document.querySelector('.popup__input_avatar'),
+  job: document.querySelector('.popup__input_text'),
 };
