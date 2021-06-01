@@ -1,7 +1,7 @@
 .elements__info {
-    display: flex;
-    background: #FFFFFF;
-    align-items: center;
-    justify-content: space-between;
-    border-radius: 0 0 10px 10px;
+  display: flex;
+  background: #ffffff;
+  align-items: center;
+  justify-content: space-between;
+  border-radius: 0 0 10px 10px;
 }

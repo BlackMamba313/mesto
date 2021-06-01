@@ -137,8 +137,6 @@ const popupAvatar = new PopupWithForm({
 buttons.avatar.addEventListener('click', function () {
   popupAvatar.open();
 });
-const formAvatarValidation = new FormValidator(validationConfig, forms.avatar);
-formAvatarValidation.enableValidation();
 
 const popupAddCard = new PopupWithForm({
   popup: popups.add,
@@ -182,8 +180,9 @@ const popupConfirm = new PopupConfirm({
       });
   },
 });
+const formAvatarValidation = new FormValidator(validationConfig, forms.avatar);
+formAvatarValidation.enableValidation();
 // повесим слушатели
-popupConfirm.setEventListeners();
 popupProfile.setEventListeners();
 popupImage.setEventListeners();
 popupAddCard.setEventListeners();

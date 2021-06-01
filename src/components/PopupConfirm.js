@@ -8,17 +8,16 @@ export default class PopupConfirm extends Popup {
   }
   //вешаем слушатель на кнопку удаления.
   _setEventListeners() {
-    super._setEventListeners();
-    this._deleteCardButton.addEventListener('click', this._confirmDelete);
+    super.setEventListeners();
+    this._deleteCardBtn.addEventListener('click', this._confirmDelete);
   }
-  
+
   _confirmDelete = () => {
     this._handleDeleteButtonClick();
-  }
+  };
 
   open() {
     this._setEventListeners();
     super.open();
   }
-
 }

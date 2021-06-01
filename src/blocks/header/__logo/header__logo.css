@@ -1,5 +1,5 @@
 .header__logo {
-  color: #FFFFFF;
+  color: #ffffff;
   width: 142px;
   height: 33px;
   transition: opacity 0.5s ease;
@@ -8,7 +8,7 @@
 .header__logo:hover {
   opacity: 0.1;
 }
-  
+
 @media screen and (max-width: 880px) {
   .header__logo {
     width: 103.74px;

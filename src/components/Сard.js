@@ -24,7 +24,7 @@ export default class Card {
   _toggleLike() {
     this._handleLikeClick(this._cardId, this.isLiked)
       .then((data) => {
-        this._btnLike.classList.toggle('elements__like-btn_active');
+        this._buttonLike.classList.toggle('elements__like-btn_active');
         this.isLiked = !this.isLiked;
         this._likesCounter.textContent = data.likes.length;
       })
@@ -35,21 +35,21 @@ export default class Card {
 
   _setEventListeners() {
     this._cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link));
-    this._btnDelete.addEventListener('click', () => this._handleDeleteIconClick());
-    this._btnLike.addEventListener('click', () => this._toggleLike());
+    this._buttonDelete.addEventListener('click', () => this._handleDeleteIconClick(this));
+    this._buttonLike.addEventListener('click', () => this._toggleLike());
   }
 
   _canDeleteCard() {
     if (this._userId !== this._ownerId) {
-      this._btnDelete.classList.add('elements__delete-btn_hidden');
+      this._buttonDelete.classList.add('elements__delete-btn_hidden');
     } else {
-      this._btnDelete.classList.remove('elements__delete-btn_hidden');
+      this._buttonDelete.classList.remove('elements__delete-btn_hidden');
     }
   }
 
   markLikes() {
     if (this._likes.some((person) => person._id === this._userId)) {
-      this._btnLike.classList.add('elements__like-btn_active');
+      this._buttonLike.classList.add('elements__like-btn_active');
     }
   }
 
@@ -64,9 +64,9 @@ export default class Card {
 
   generateCard() {
     this._element = this._getTemplate();
-    this._btnLike = this._element.querySelector('.elements__like-btn');
+    this._buttonLike = this._element.querySelector('.elements__like-btn');
     this._likesCounter = this._element.querySelector('.elements__likesCounter');
-    this._btnDelete = this._element.querySelector('.elements__delete-btn');
+    this._buttonDelete = this._element.querySelector('.elements__delete-btn');
     this._cardImage = this._element.querySelector('.elements__image');
     this._cardTitle = this._element.querySelector('.elements__title');
     this._cardImage.src = this._link;

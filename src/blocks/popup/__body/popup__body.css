@@ -1,12 +1,12 @@
 .popup__body {
   width: 430px;
-  background: #FFFFFF;
+  background: #ffffff;
   box-shadow: 0px 0px 25px rgba(0, 0, 0, 0.15);
   border-radius: 10px;
   position: relative;
 }
 
-@media screen and (max-width:880px) {
+@media screen and (max-width: 880px) {
   .popup__body {
     width: 282px;
   }

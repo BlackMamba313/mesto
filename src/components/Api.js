@@ -5,13 +5,15 @@ export default class Api {
   }
 
   getInitialCards() {
-    return fetch(`${this._baseUrl}/cards`, { headers: this._headers })
-    .then(this._checkRequestResult);
+    return fetch(`${this._baseUrl}/cards`, { headers: this._headers }).then(
+      this._checkRequestResult,
+    );
   }
 
   getUserInfo() {
-    return fetch(`${this._baseUrl}/users/me`, { headers: this._headers })
-    .then(this._checkRequestResult);
+    return fetch(`${this._baseUrl}/users/me`, { headers: this._headers }).then(
+      this._checkRequestResult,
+    );
   }
 
   _checkRequestResult(res) {
@@ -23,14 +25,13 @@ export default class Api {
 
   setUserInfo(name, job) {
     return fetch(`${this._baseUrl}/users/me`, {
-      method: "PATCH",
+      method: 'PATCH',
       headers: this._headers,
       body: JSON.stringify({
         name: name,
-        about: job
-      })
-    })
-      .then(this._checkRequestResult);
+        about: job,
+      }),
+    }).then(this._checkRequestResult);
   }
 
   setAvatar(avatarLink) {

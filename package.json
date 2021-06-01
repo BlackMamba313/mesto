@@ -4,7 +4,7 @@
   "description": "Учебный проект mesto от Yandex.Praktikum",
   "main": "index.js",
   "scripts": {
-    "prettier": "prettier --write src/**/*.js",
+    "prettier": "prettier --write src",
     "dev": "webpack serve --open ",
     "build": "rd /s /q dist && webpack",
     "deploy": "gh-pages -d dist"
