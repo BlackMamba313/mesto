@@ -58,9 +58,9 @@ function createCard(data) {
         popupImage.open(title, link);
       },
       handleLikeClick: (cardId, isLiked) => {
-        return api.likeCard(cardId, isLiked)
+        api.likeCard(cardId, isLiked)
         .then((data, isLiked) => {
-          card.setLikesInfo(data);
+          card.setLikesInfo(data, isLiked);
         })
         .catch((err) => {
           console.log(err);

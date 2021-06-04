@@ -25,9 +25,9 @@ export default class Card {
     return cardElement;
   }
 
-  setLikesInfo(dataLikes) {
+  setLikesInfo(data) {
     this.isLiked = !this.isLiked;
-    this._likesCounter.textContent = dataLikes.likes.length;
+    this._likesCounter.textContent = data.likes.length;
     if(this.isLiked) {
       this._buttonLike.classList.add('elements__like-btn_active');
     } else {
@@ -52,6 +52,7 @@ export default class Card {
   markLikes() {
     if (this._likes.some((person) => person._id === this._userId)) {
       this._buttonLike.classList.add('elements__like-btn_active');
+      this.isLiked = true
     }
   }
 
