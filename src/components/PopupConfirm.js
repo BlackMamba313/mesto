@@ -7,7 +7,7 @@ export default class PopupConfirm extends Popup {
     this._deleteCardBtn = this._popup.querySelector('.popup__btn-save');
   }
   //вешаем слушатель на кнопку удаления.
-  _setEventListeners() {
+  setEventListeners() {
     super.setEventListeners();
     this._deleteCardBtn.addEventListener('click', this._confirmDelete);
   }
@@ -15,9 +15,4 @@ export default class PopupConfirm extends Popup {
   _confirmDelete = () => {
     this._handleDeleteButtonClick();
   };
-
-  open() {
-    this._setEventListeners();
-    super.open();
-  }
 }

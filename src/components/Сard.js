@@ -11,6 +11,10 @@ export default class Card {
     this._handleLikeClick = handlers.handleLikeClick;
     this._handleDeleteIconClick = handlers.handleDeleteIconClick;
   }
+  
+  getCardId() { 
+    return this._cardId;
+  }
 
   _getTemplate() {
     const cardElement = document
@@ -21,22 +25,20 @@ export default class Card {
     return cardElement;
   }
 
-  _toggleLike() {
-    this._handleLikeClick(this._cardId, this.isLiked)
-      .then((data) => {
-        this._buttonLike.classList.toggle('elements__like-btn_active');
-        this.isLiked = !this.isLiked;
-        this._likesCounter.textContent = data.likes.length;
-      })
-      .catch((err) => {
-        console.log(err);
-      });
+  setLikesInfo(dataLikes) {
+    this.isLiked = !this.isLiked;
+    this._likesCounter.textContent = dataLikes.likes.length;
+    if(this.isLiked) {
+      this._buttonLike.classList.add('elements__like-btn_active');
+    } else {
+      this._buttonLike.classList.remove('elements__like-btn_active');
+    }
   }
 
   _setEventListeners() {
     this._cardImage.addEventListener('click', () => this._handleCardClick(this._name, this._link));
     this._buttonDelete.addEventListener('click', () => this._handleDeleteIconClick(this));
-    this._buttonLike.addEventListener('click', () => this._toggleLike());
+    this._buttonLike.addEventListener('click', () => this._handleLikeClick(this._cardId, this.isLiked));
   }
 
   _canDeleteCard() {

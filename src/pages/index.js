@@ -29,15 +29,24 @@ const api = new Api({
 
 //получаем информацию о юзере
 let userId;
-api
-  .getUserInfo()
-  .then((data) => {
-    userId = data._id;
-    userInfo.setUserInfo(data);
+let cardsList;
+
+  Promise.all([api.getUserInfo(), api.getInitialCards()])
+  .then(([userData, cards]) => {
+    userId = userData._id;
+    userInfo.setUserInfo(userData);
+    cardsList = new Section(
+      {
+        items: cards,
+        renderer: (item) => {
+          const cardElement = createCard(item);
+          cardsList.addItem(cardElement);
+        },
+      },
+      cardSection,
+    );
+    cardsList.renderItems();
   })
-  .catch((err) => {
-    console.log(err);
-  });
 
 function createCard(data) {
   const card = new Card({
@@ -49,7 +58,13 @@ function createCard(data) {
         popupImage.open(title, link);
       },
       handleLikeClick: (cardId, isLiked) => {
-        return api.likeCard(cardId, isLiked);
+        return api.likeCard(cardId, isLiked)
+        .then((data, isLiked) => {
+          card.setLikesInfo(data);
+        })
+        .catch((err) => {
+          console.log(err);
+        })
       },
       handleDeleteIconClick: (cardObject) => {
         popupConfirm.cardObject = cardObject;
@@ -62,27 +77,6 @@ function createCard(data) {
   card.updateLikes(cardElement);
   return cardElement;
 }
-//получаем карточки
-let cardsList;
-
-api
-  .getInitialCards()
-  .then((data) => {
-    cardsList = new Section(
-      {
-        items: data,
-        renderer: (item) => {
-          const cardElement = createCard(item);
-          cardsList.addItem(cardElement);
-        },
-      },
-      cardSection,
-    );
-    cardsList.renderItems();
-  })
-  .catch((err) => {
-    console.log(err);
-  });
 
 function renderLoading(popup, isLoading) {
   const submitButton = popup.querySelector('.popup__btn-save');
@@ -101,6 +95,7 @@ const popupProfile = new PopupWithForm({
       .setUserInfo(info.name, info.job)
       .then((data) => {
         userInfo.setUserInfo(data);
+        popupProfile.close()
       })
       .catch((err) => {
         console.log(err);
@@ -127,6 +122,7 @@ const popupAvatar = new PopupWithForm({
       .setAvatar(info.avatarLink)
       .then((data) => {
         userInfo.setUserInfo(data);
+        popupAvatar.close()
       })
       .catch((err) => {
         console.log(err);
@@ -147,6 +143,7 @@ const popupAddCard = new PopupWithForm({
       .then((data) => {
         const cardElement = createCard(data);
         cardsList.addItem(cardElement);
+        popupAddCard.close()
       })
       .catch((err) => {
         console.log(err);
@@ -167,7 +164,9 @@ const popupImage = new PopupWithImage(popups.image);
 const popupConfirm = new PopupConfirm({
   popup: popups.confirm,
   handleDeleteButtonClick: () => {
-    const cardId = popupConfirm.cardObject._cardId;
+    console.log(popupConfirm)
+    const cardId = popupConfirm.cardObject.getCardId();
+    
     api
       .deleteCard(cardId)
       .then(() => {
@@ -178,11 +177,13 @@ const popupConfirm = new PopupConfirm({
       .catch((err) => {
         console.log(err);
       });
+      ;
   },
 });
 const formAvatarValidation = new FormValidator(validationConfig, forms.avatar);
 formAvatarValidation.enableValidation();
 // повесим слушатели
+popupConfirm.setEventListeners();
 popupProfile.setEventListeners();
 popupImage.setEventListeners();
 popupAddCard.setEventListeners();
